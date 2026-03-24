@@ -604,10 +604,13 @@ section {
 .research-card {
     background-color: var(--surface-primary);
     border-left: 4px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
     padding: 2rem;
     border-radius: 0.5rem;
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
+    height: 100%;
 }
 
 .research-card:hover {
@@ -632,6 +635,7 @@ section {
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .research-domain,
