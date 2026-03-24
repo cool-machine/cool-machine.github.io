@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const root = document.documentElement;
     const themeToggle = document.getElementById('theme-toggle');
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    const emailLinks = document.querySelectorAll('.js-email-link');
 
     function getTheme() {
         return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
@@ -35,6 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     applyTheme(getTheme());
+
+    if (emailLinks.length > 0) {
+        const mailbox = ['george', 'whartonai', 'studio'];
+        const email = `${mailbox[0]}@${mailbox[1]}.${mailbox[2]}`;
+
+        emailLinks.forEach(link => {
+            const subject = link.dataset.subject || 'Portfolio Inquiry';
+            link.setAttribute('aria-label', `Email George Gvishiani about ${subject}`);
+
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+            });
+        });
+    }
 
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
